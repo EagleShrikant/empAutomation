@@ -1,0 +1,9 @@
+com\email\service\EmailServiceImpl.class
+com\email\constants\EmailConstants.class
+com\email\service\EmailServiceAPI.class
+com\email\model\EmailResponse.class
+com\email\service\EmailService.class
+com\email\model\EmailError.class
+com\email\service\EmailServiceAPIImpl.class
+com\email\bootloader\Application.class
+com\email\model\EmailRequest.class
