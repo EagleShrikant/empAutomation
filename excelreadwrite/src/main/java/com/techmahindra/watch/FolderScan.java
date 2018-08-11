@@ -33,12 +33,13 @@ public class FolderScan {
 				if (StandardWatchEventKinds.ENTRY_CREATE.equals(event.kind())) {
 					String fileName = event.context().toString();
 					//System.out.println("File Created:" + fileName);
-					processEvent.process();
+					processEvent.process(watchingSourceFolder+"/"+fileName);
 					File file1 = new File(watchingSourceFolder+"/"+fileName);
 					SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
 				    Date date = new Date();
 					File file2 = new File(watchingDestinationFolder+"/"+formatter.format(date));
 					System.out.println( file1.renameTo(file2) );
+					file1.delete();
 				}
 			}
 			valid = watchKey.reset();

@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface ProcessEvent {
 	
-	public boolean process();
+	public boolean process(String fileName);
 	
 }

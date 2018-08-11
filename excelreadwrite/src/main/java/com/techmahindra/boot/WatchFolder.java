@@ -19,11 +19,11 @@ public class WatchFolder implements ProcessEvent {
 	DataExtraction dataExtraction;
 	
 	@Override
-	public boolean process() {
+	public boolean process(String fileName) {
 		
 		try {
 				
-		dataExtraction.process();
+		dataExtraction.process(fileName);
 		
 		return true;
 		}
