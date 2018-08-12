@@ -1,6 +1,0 @@
-com\techmahindra\boot\ExtractApplication.class
-com\techmahindra\boot\WatchFolder.class
-com\techmahindra\boot\InitialConf.class
-com\techmahindra\extraction\DataExtraction.class
-com\techmahindra\watch\ProcessEvent.class
-com\techmahindra\watch\FolderScan.class
