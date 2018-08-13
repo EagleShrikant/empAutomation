@@ -1,4 +1,4 @@
-package com.techmahindra.dto;
+package com.techmahindra.dao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
