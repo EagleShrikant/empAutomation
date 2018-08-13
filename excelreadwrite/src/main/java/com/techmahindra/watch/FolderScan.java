@@ -37,7 +37,7 @@ public class FolderScan {
 					File file1 = new File(watchingSourceFolder+"/"+fileName);
 					SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy");  
 				    Date date = new Date();
-					File file2 = new File(watchingDestinationFolder+"/"+formatter.format(date));
+					File file2 = new File(watchingDestinationFolder+"/"+formatter.format(date)+".xls");
 					System.out.println( file1.renameTo(file2) );
 					file1.delete();
 				}

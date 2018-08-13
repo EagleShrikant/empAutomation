@@ -1,6 +1,8 @@
 package com.techmahindra.boot;
 
 
+import java.util.Properties;
+
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
@@ -38,7 +40,8 @@ public class MySQLAppConfig {
     @Bean(name = "sessionFactory")
     public SessionFactory getSessionFactory(DataSource dataSource) {
         LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-        sessionBuilder.scanPackages("com.vflux.rbot.services.account.domain");
+        sessionBuilder.scanPackages("com.techmahindra");
+        sessionBuilder.addProperties(hibernateProperties());
         return sessionBuilder.buildSessionFactory();
     }
     @Bean(name = "transactionManager")
@@ -54,4 +57,20 @@ public class MySQLAppConfig {
         initializer.setDataSource(dataSource);
         return initializer;
     }    
+    
+    
+    final Properties hibernateProperties() {
+        final Properties hibernateProperties = new Properties();
+
+        /*
+        http://stackoverflow.com/questions/438146/hibernate-hbm2ddl-auto-possible-values-and-what-they-do
+        Stackoverflow description of what each hibernate.hbm2ddl.auto param does
+         */
+        hibernateProperties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+        hibernateProperties.setProperty("hibernate.show_sql", "true");
+
+        return hibernateProperties;
+    }
+
 }

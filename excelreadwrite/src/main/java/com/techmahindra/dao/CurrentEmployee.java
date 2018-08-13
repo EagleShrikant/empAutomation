@@ -12,37 +12,36 @@ import javax.persistence.Table;
 public class CurrentEmployee {
 
 	@Id
-    //@GeneratedValue(strategy=GenerationType.)
-    private String EMPID; 
+	@Column(name = "EMPID", length=11 ) private String EMPID; 
 	
-	@Column(name = "EMP_NAME") private String EMP_NAME;
-    @Column(name = "BUSINESS_WAIT_AGE") private int BUSINESS_WAIT_AGE;
-    @Column(name = "BV_STATUS") private String BV_STATUS;
-    @Column(name = "EMPLOYEE_CLASS_CATEGORY") private String EMPLOYEE_CLASS_CATEGORY;
-    @Column(name = "GENDER") private String GENDER;
-    @Column(name = "CATEGORY_CODE") private String CATEGORY_CODE;
-    @Column(name = "HTR_FLAG") private String HTR_FLAG;
-    @Column(name = "EMPLOYEE_IBU") private String EMPLOYEE_IBU;
-    @Column(name = "BAND") private String BAND;
-    @Column(name = "TOTAL_EXPERIENCE") private double TOTAL_EXPERIENCE;
-    @Column(name = "CURRENT_COUNTRY") private String CURRENT_COUNTRY;
-    @Column(name = "CURRENT_LOCATION_CITY") private String CURRENT_LOCATION_CITY;
-    @Column(name = "ONSITE_OFFSHORE") private String ONSITE_OFFSHORE;
-    @Column(name = "PROJECT_ID") private String PROJECT_ID;
-    @Column(name = "PROJECT_DESCRIPTION") private String PROJECT_DESCRIPTION;
-    @Column(name = "PROJECT_CONTRACT_TYPE") private String PROJECT_CONTRACT_TYPE;
-    @Column(name = "PROJECT_MAINTYPE_DESCR") private String PROJECT_MAINTYPE_DESCR;
-    @Column(name = "BILLABLITY_STATUS") private boolean BILLABLITY_STATUS;
-    @Column(name = "CUSTOMER_ID") private String CUSTOMER_ID;
-    @Column(name = "CUSTOMER_NAME") private String CUSTOMER_NAME;
-    @Column(name = "SUPERVISOR_ID") private String SUPERVISOR_ID;
-    @Column(name = "SUPERVISOR_NAME") private String SUPERVISOR_NAME;
-    @Column(name = "PROGRAM_MANAGER_ID") private String PROGRAM_MANAGER_ID;
-    @Column(name = "PROGRAM_MANAGER_NAME") private String PROGRAM_MANAGER_NAME;
-    @Column(name = "PRIMARY_SKILL_CATEGORY_1") private String PRIMARY_SKILL_CATEGORY_1;
-    @Column(name = "PRIMARY_SKILL_CATEGORY_2") private String PRIMARY_SKILL_CATEGORY_2;
-    @Column(name = "PROJECT_TYPE") private String PROJECT_TYPE;
-    @Column(name = "PO_FLAG") private String PO_FLAG;
+	@Column(name = "EMP_NAME", length=50) private String EMP_NAME;
+    @Column(name = "BUSINESS_WAIT_AGE" ) private int BUSINESS_WAIT_AGE;
+    @Column(name = "BV_STATUS",length=11) private String BV_STATUS;
+    @Column(name = "EMPLOYEE_CLASS_CATEGORY",length=50) private String EMPLOYEE_CLASS_CATEGORY;
+    @Column(name = "GENDER",length=50) private String GENDER;
+    @Column(name = "CATEGORY_CODE",length=50) private String CATEGORY_CODE;
+    @Column(name = "HTR_FLAG",length=50) private String HTR_FLAG;
+    @Column(name = "EMPLOYEE_IBU",length=50) private String EMPLOYEE_IBU;
+    @Column(name = "BAND",length=50) private String BAND;
+    @Column(name = "TOTAL_EXPERIENCE",length=50) private double TOTAL_EXPERIENCE;
+    @Column(name = "CURRENT_COUNTRY",length=50) private String CURRENT_COUNTRY;
+    @Column(name = "CURRENT_LOCATION_CITY",length=50) private String CURRENT_LOCATION_CITY;
+    @Column(name = "ONSITE_OFFSHORE",length=50) private String ONSITE_OFFSHORE;
+    @Column(name = "PROJECT_ID",length=50) private String PROJECT_ID;
+    @Column(name = "PROJECT_DESCRIPTION",length=70) private String PROJECT_DESCRIPTION;
+    @Column(name = "PROJECT_CONTRACT_TYPE",length=50) private String PROJECT_CONTRACT_TYPE;
+    @Column(name = "PROJECT_MAINTYPE_DESCR",length=50) private String PROJECT_MAINTYPE_DESCR;
+    @Column(name = "BILLABLITY_STATUS",length=50) private boolean BILLABLITY_STATUS;
+    @Column(name = "CUSTOMER_ID",length=50) private String CUSTOMER_ID;
+    @Column(name = "CUSTOMER_NAME",length=50) private String CUSTOMER_NAME;
+    @Column(name = "SUPERVISOR_ID",length=50) private String SUPERVISOR_ID;
+    @Column(name = "SUPERVISOR_NAME",length=50) private String SUPERVISOR_NAME;
+    @Column(name = "PROGRAM_MANAGER_ID",length=50) private String PROGRAM_MANAGER_ID;
+    @Column(name = "PROGRAM_MANAGER_NAME",length=50) private String PROGRAM_MANAGER_NAME;
+    @Column(name = "PRIMARY_SKILL_CATEGORY_1",length=50) private String PRIMARY_SKILL_CATEGORY_1;
+    @Column(name = "PRIMARY_SKILL_CATEGORY_2",length=50) private String PRIMARY_SKILL_CATEGORY_2;
+    @Column(name = "PROJECT_TYPE",length=50) private String PROJECT_TYPE;
+    @Column(name = "PO_FLAG",length=10) private String PO_FLAG;
 	public String getEMPID() {
 		return EMPID;
 	}
@@ -216,6 +215,22 @@ public class CurrentEmployee {
 	}
 	public void setPO_FLAG(String PO_FLAG) {
 		this.PO_FLAG = PO_FLAG;
+	}
+	@Override
+	public String toString() {
+		return "\nCurrentEmployee [EMPID=" + EMPID + ", EMP_NAME=" + EMP_NAME + ", BUSINESS_WAIT_AGE=" + BUSINESS_WAIT_AGE
+				+ ", BV_STATUS=" + BV_STATUS + ", EMPLOYEE_CLASS_CATEGORY=" + EMPLOYEE_CLASS_CATEGORY + ", GENDER="
+				+ GENDER + ", CATEGORY_CODE=" + CATEGORY_CODE + ", HTR_FLAG=" + HTR_FLAG + ", EMPLOYEE_IBU="
+				+ EMPLOYEE_IBU + ", BAND=" + BAND + ", TOTAL_EXPERIENCE=" + TOTAL_EXPERIENCE + ", CURRENT_COUNTRY="
+				+ CURRENT_COUNTRY + ", CURRENT_LOCATION_CITY=" + CURRENT_LOCATION_CITY + ", ONSITE_OFFSHORE="
+				+ ONSITE_OFFSHORE + ", PROJECT_ID=" + PROJECT_ID + ", PROJECT_DESCRIPTION=" + PROJECT_DESCRIPTION
+				+ ", PROJECT_CONTRACT_TYPE=" + PROJECT_CONTRACT_TYPE + ", PROJECT_MAINTYPE_DESCR="
+				+ PROJECT_MAINTYPE_DESCR + ", BILLABLITY_STATUS=" + BILLABLITY_STATUS + ", CUSTOMER_ID=" + CUSTOMER_ID
+				+ ", CUSTOMER_NAME=" + CUSTOMER_NAME + ", SUPERVISOR_ID=" + SUPERVISOR_ID + ", SUPERVISOR_NAME="
+				+ SUPERVISOR_NAME + ", PROGRAM_MANAGER_ID=" + PROGRAM_MANAGER_ID + ", PROGRAM_MANAGER_NAME="
+				+ PROGRAM_MANAGER_NAME + ", PRIMARY_SKILL_CATEGORY_1=" + PRIMARY_SKILL_CATEGORY_1
+				+ ", PRIMARY_SKILL_CATEGORY_2=" + PRIMARY_SKILL_CATEGORY_2 + ", PROJECT_TYPE=" + PROJECT_TYPE
+				+ ", PO_FLAG=" + PO_FLAG + "]";
 	}
     
     

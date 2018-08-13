@@ -11,9 +11,9 @@ import javax.persistence.Table;
 @Table(name = "PREVIOUS_EMP_DATA")
 public class PreviousEmployee {
 
+	
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String EMPID; 
+	@Column(name = "EMPID", length=11 ) private String EMPID;
 	
 	@Column(name = "EMP_NAME") private String EMP_NAME;
     @Column(name = "BUSINESS_WAIT_AGE") private int BUSINESS_WAIT_AGE;

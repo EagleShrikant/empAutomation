@@ -15,12 +15,20 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.techmahindra.boot.MySQLAppConfig;
 import com.techmahindra.dao.CurrentEmployee;
 
 @Component
 public class DataExtraction {
+
+	@Autowired
+	MySQLAppConfig mySQLAppConfig;
 
 	List<CurrentEmployee> currentDataList;
 
@@ -35,15 +43,17 @@ public class DataExtraction {
 
 		FileInputStream excelFile = null;
 		Workbook workbook = null;
-		
+
 		try {
-		
-			//Thread.sleep(2000);
+
+			Thread.sleep(1000);
 			excelFile = new FileInputStream(new File(fileName));
 			workbook = new XSSFWorkbook(excelFile);
 			XSSFSheet datatypeSheet = (XSSFSheet) workbook.getSheetAt(2);
 			currentDataList = readEmpData(datatypeSheet);
-		
+
+			addDatalisttoDatabase(currentDataList);
+
 		} catch (IOException e) {
 			System.out.println(e);
 			e.printStackTrace();
@@ -63,16 +73,36 @@ public class DataExtraction {
 		}
 
 	}
-	
-	
-	public List<CurrentEmployee> readEmpData(XSSFSheet datatypeSheet){
+
+	private void addDatalisttoDatabase(List<CurrentEmployee> currentDataList2) {
+		Session session = mySQLAppConfig.getSessionFactory(mySQLAppConfig.getDataSource()).openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+
+			for (CurrentEmployee ce : currentDataList2) {
+				session.save(ce);
+			}
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+	}
+
+	public List<CurrentEmployee> readEmpData(XSSFSheet datatypeSheet) {
 		String temp = null;
 		CurrentEmployee ce;
 		int tempIntValue = 0;
 		double tempDoubleValue = 0.0;
 		Iterator<Row> iterator = datatypeSheet.iterator();
 		List<CurrentEmployee> dataList = new LinkedList<>();
-		if(iterator.hasNext()) iterator.next();
+		if (iterator.hasNext())
+			iterator.next();
 		while (iterator.hasNext()) {
 
 			Row currentRow = iterator.next();
@@ -95,21 +125,21 @@ public class DataExtraction {
 				if (i == 0 && temp.equals(""))
 					continue;
 
-				//System.out.print(temp);
-				
-				loop : switch (i) {
-				case 0 :
+				// System.out.print(temp);
+
+				loop: switch (i) {
+				case 0:
 					if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
 						Double d = currentCell.getNumericCellValue();
 						temp = Integer.toString(d.intValue());
 					}
 					ce.setEMPID(temp);
 					break loop;
-				case 1 :
+				case 1:
 					ce.setEMP_NAME(temp);
 					break loop;
-				case 2 :
-					
+				case 2:
+
 					if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
 						Double d = currentCell.getNumericCellValue();
 						tempIntValue = d.intValue();
@@ -165,10 +195,10 @@ public class DataExtraction {
 					ce.setPROJECT_MAINTYPE_DESCR(temp);
 					break loop;
 				case 18:
-					if(temp.equals("Y"))
-					ce.setBILLABLITY_STATUS(true);
+					if (temp.equals("Y"))
+						ce.setBILLABLITY_STATUS(true);
 					else
-					ce.setBILLABLITY_STATUS(false);
+						ce.setBILLABLITY_STATUS(false);
 					break loop;
 				case 19:
 					ce.setCUSTOMER_ID(temp);
@@ -202,13 +232,11 @@ public class DataExtraction {
 					break loop;
 
 				}
-	
 
 			}
-			if(null!=ce.getEMPID())
-			dataList.add(ce);
-			
-			
+			if (null != ce.getEMPID())
+				dataList.add(ce);
+
 		}
 		System.out.println("\t" + dataList);
 		return dataList;
