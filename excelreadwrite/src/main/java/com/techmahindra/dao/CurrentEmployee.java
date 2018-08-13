@@ -42,7 +42,7 @@ public class CurrentEmployee {
     @Column(name = "PRIMARY_SKILL_CATEGORY_1") private String PRIMARY_SKILL_CATEGORY_1;
     @Column(name = "PRIMARY_SKILL_CATEGORY_2") private String PRIMARY_SKILL_CATEGORY_2;
     @Column(name = "PROJECT_TYPE") private String PROJECT_TYPE;
-    @Column(name = "PO_FLAG") private String createdOn;
+    @Column(name = "PO_FLAG") private String PO_FLAG;
 	public String getEMPID() {
 		return EMPID;
 	}
@@ -212,10 +212,10 @@ public class CurrentEmployee {
 		PROJECT_TYPE = pROJECT_TYPE;
 	}
 	public String getCreatedOn() {
-		return createdOn;
+		return PO_FLAG;
 	}
-	public void setCreatedOn(String createdOn) {
-		this.createdOn = createdOn;
+	public void setCreatedOn(String PO_FLAG) {
+		this.PO_FLAG = PO_FLAG;
 	}
     
     
