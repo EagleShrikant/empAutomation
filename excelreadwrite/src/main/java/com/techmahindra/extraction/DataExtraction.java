@@ -38,13 +38,13 @@ public class DataExtraction {
 		
 		try {
 		
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
 			excelFile = new FileInputStream(new File(fileName));
 			workbook = new XSSFWorkbook(excelFile);
 			XSSFSheet datatypeSheet = (XSSFSheet) workbook.getSheetAt(2);
 			currentDataList = readEmpData(datatypeSheet);
 		
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException e) {
 			System.out.println(e);
 			e.printStackTrace();
 		} catch (Exception e) {
