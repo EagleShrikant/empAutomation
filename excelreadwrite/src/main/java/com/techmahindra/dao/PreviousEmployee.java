@@ -211,10 +211,10 @@ public class PreviousEmployee {
 	public void setPROJECT_TYPE(String pROJECT_TYPE) {
 		PROJECT_TYPE = pROJECT_TYPE;
 	}
-	public String getCreatedOn() {
+	public String getPO_FLAG() {
 		return PO_FLAG;
 	}
-	public void setCreatedOn(String PO_FLAG) {
+	public void setPO_FLAG(String PO_FLAG) {
 		this.PO_FLAG = PO_FLAG;
 	}
     
