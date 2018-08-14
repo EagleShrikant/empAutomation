@@ -1,18 +1,32 @@
 package com.techmahindra.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.techmahindra.bean.BillableTable;
-import com.techmahindra.bean.SummaryTable;
+import com.techmahindra.model.BillableModel;
+import com.techmahindra.model.SummaryModel;
 
-@Component
+
+@RestController
 public class DashboardServiceImpl {
 
-	public SummaryTable getSummaryTable() {
-		
+	@Autowired
+	SummaryModel summaryModel;
+	
+	@Autowired
+	BillableModel billableModel;
+	
+	@GetMapping("/getSummaryData")
+	public SummaryModel getSummaryModel() {
+		System.out.println("getSummaryData");
+		return summaryModel;
 	}
 	
-	public BillableTable getBillableTable() {
-		
+	@GetMapping("/getBillableData")
+	public BillableModel getBillableModel() {
+		System.out.println("getBillableData");
+		return billableModel;
 	}
 }
