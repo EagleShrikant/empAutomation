@@ -2,18 +2,68 @@ package com.techmahindra.model;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.CriteriaQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.techmahindra.boot.MySQLAppConfig;
 import com.techmahindra.dao.CurrentEmployee;
 
+
+
+@Component
 public class SummaryModel {
+
+	
+	@Autowired
+	MySQLAppConfig mySQLAppConfig;
+	
+	List<CurrentEmployee> currentDataList;
+	
+	
+	public List<CurrentEmployee> SummaryModelDataFetch() {
+		
+		System.out.println("SummaryModelDataFetch");
+		Session session = mySQLAppConfig.getSessionFactory(mySQLAppConfig.getDataSource()).openSession();
+	      Transaction tx = null;
+	      
+	      try {
+	         tx = session.beginTransaction();
+
+	         currentDataList = session.createQuery("from CurrentEmployee").list();
+	         
+	         tx.commit();
+	      } catch (HibernateException e) {
+	         if (tx!=null) tx.rollback();
+	         e.printStackTrace(); 
+	      } catch (Exception e) {
+		         if (tx!=null) tx.rollback();
+		         e.printStackTrace(); 
+		      }
+	      
+	      finally {
+	         session.close(); 
+	      }
+	      
+	      return currentDataList;
+	}
 	
 	int[][] summary = new int[10][10];
 
+	
 	public int[][] getSummaryTable() {
+		SummaryModelDataFetch();
+		setSummaryTable(currentDataList);
 		return summary;
 	}
 	
 	public int[][] setSummaryTable(List<CurrentEmployee> currentEmpList) {
-				
+		
 		// Delivery Projects with PO
 		summary[0][0] = getDeliveryProjectswithPOTotalOnsite(currentEmpList);
 		summary[0][1] = getDeliveryProjectswithPOTotalOffshore(currentEmpList);
@@ -22,21 +72,21 @@ public class SummaryModel {
 		summary[0][4] = getDeliveryProjectswithPOUnbilledOnsite(currentEmpList);
 		summary[0][5] = getDeliveryProjectswithPODoNOTBILL(currentEmpList);
 		summary[0][6] = summary[0][3] + summary[0][4];
-		summary[0][7] = getDeliveryProjectswithPOBilledOffshore();
-		summary[0][8] = getDeliveryProjectswithPOBilledOnsite();
+		summary[0][7] = getDeliveryProjectswithPOBilledOffshore(currentEmpList);
+		summary[0][8] = getDeliveryProjectswithPOBilledOnsite(currentEmpList);
 		summary[0][9] = summary[0][7] + summary[0][8];
 
 		// Delivery without PO
 		summary[1][0] = getDeliverywithoutPOTotalOnsite(currentEmpList);
 		summary[1][1] = getDeliverywithoutPOTotalOffshore(currentEmpList);
-		summary[1][2] = summary[0][0] + summary[0][1];
+		summary[1][2] = summary[1][0] + summary[1][1];
 		summary[1][3] = getDeliverywithoutPOUnbilledOffshore(currentEmpList);
 		summary[1][4] = getDeliverywithoutPOUnbilledOnsite(currentEmpList);
 		summary[1][5] = getDeliverywithoutPODoNOTBILL(currentEmpList);
-		summary[1][6] = summary[0][3] + summary[0][4];
-		summary[1][7] = getDeliverywithoutPOBilledOffshore();
-		summary[1][8] = getDeliverywithoutPOBilledOnsite();
-		summary[1][9] = summary[0][7] + summary[0][8];
+		summary[1][6] = summary[1][3] + summary[1][4];
+		summary[1][7] = getDeliverywithoutPOBilledOffshore(currentEmpList);
+		summary[1][8] = getDeliverywithoutPOBilledOnsite(currentEmpList);
+		summary[1][9] = summary[1][7] + summary[1][8];
 
 		// Delivery Total
 		summary[2][0] = summary[0][0] + summary[1][0];
@@ -347,14 +397,26 @@ public class SummaryModel {
 		return 0;
 	}
 
-	private int getDeliverywithoutPOBilledOnsite() {
-		// TODO Auto-generated method stub
-		return 0;
+	private int getDeliverywithoutPOBilledOnsite(List<CurrentEmployee> currentEmpList) {
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("N")&& ce.isBILLABLITY_STATUS()) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
-	private int getDeliverywithoutPOBilledOffshore() {
-		// TODO Auto-generated method stub
-		return 0;
+	private int getDeliverywithoutPOBilledOffshore(List<CurrentEmployee> currentEmpList) {
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("N") && ce.isBILLABLITY_STATUS()) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliverywithoutPODoNOTBILL(List<CurrentEmployee> currentEmpList) {
@@ -363,33 +425,69 @@ public class SummaryModel {
 	}
 
 	private int getDeliverywithoutPOUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("N")&& !(ce.isBILLABLITY_STATUS())) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliverywithoutPOUnbilledOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("N") && !(ce.isBILLABLITY_STATUS())) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliverywithoutPOTotalOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("N")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliverywithoutPOTotalOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("N")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
-	private int getDeliveryProjectswithPOBilledOnsite() {
-		// TODO Auto-generated method stub
-		return 0;
+	private int getDeliveryProjectswithPOBilledOnsite(List<CurrentEmployee> currentEmpList) {
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("Y")&& ce.isBILLABLITY_STATUS()) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
-	private int getDeliveryProjectswithPOBilledOffshore() {
-		// TODO Auto-generated method stub
-		return 0;
+	private int getDeliveryProjectswithPOBilledOffshore(List<CurrentEmployee> currentEmpList) {
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("Y") && ce.isBILLABLITY_STATUS()) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliveryProjectswithPODoNOTBILL(List<CurrentEmployee> currentEmpList) {
@@ -398,22 +496,47 @@ public class SummaryModel {
 	}
 
 	private int getDeliveryProjectswithPOUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("Y")&& !(ce.isBILLABLITY_STATUS())) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliveryProjectswithPOUnbilledOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("Y") && !(ce.isBILLABLITY_STATUS())) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliveryProjectswithPOTotalOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("Y")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliveryProjectswithPOTotalOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("Y")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 }

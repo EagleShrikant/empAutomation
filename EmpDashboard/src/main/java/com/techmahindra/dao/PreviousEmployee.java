@@ -11,9 +11,9 @@ import javax.persistence.Table;
 @Table(name = "PREVIOUS_EMP_DATA")
 public class PreviousEmployee {
 
+	
 	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private String EMPID; 
+	@Column(name = "EMPID", length=11 ) private String EMPID;
 	
 	@Column(name = "EMP_NAME") private String EMP_NAME;
     @Column(name = "BUSINESS_WAIT_AGE") private int BUSINESS_WAIT_AGE;
@@ -42,7 +42,7 @@ public class PreviousEmployee {
     @Column(name = "PRIMARY_SKILL_CATEGORY_1") private String PRIMARY_SKILL_CATEGORY_1;
     @Column(name = "PRIMARY_SKILL_CATEGORY_2") private String PRIMARY_SKILL_CATEGORY_2;
     @Column(name = "PROJECT_TYPE") private String PROJECT_TYPE;
-    @Column(name = "PO_FLAG") private String createdOn;
+    @Column(name = "PO_FLAG") private String PO_FLAG;
 	public String getEMPID() {
 		return EMPID;
 	}
@@ -211,11 +211,11 @@ public class PreviousEmployee {
 	public void setPROJECT_TYPE(String pROJECT_TYPE) {
 		PROJECT_TYPE = pROJECT_TYPE;
 	}
-	public String getCreatedOn() {
-		return createdOn;
+	public String getPO_FLAG() {
+		return PO_FLAG;
 	}
-	public void setCreatedOn(String createdOn) {
-		this.createdOn = createdOn;
+	public void setPO_FLAG(String PO_FLAG) {
+		this.PO_FLAG = PO_FLAG;
 	}
     
     

@@ -21,6 +21,7 @@ public class DashboardServiceImpl {
 	@GetMapping("/getSummaryData")
 	public SummaryModel getSummaryModel() {
 		System.out.println("getSummaryData");
+		
 		return summaryModel;
 	}
 	

@@ -1,5 +1,8 @@
 package com.techmahindra.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class BillableModel {
 	int previousDeliveryWD = 0;
 	int previousMENoPOAmericas = 0;
