@@ -16,7 +16,7 @@ public class CurrentEmployee {
 	
 	@Column(name = "EMP_NAME", length=50) private String EMP_NAME;
     @Column(name = "BUSINESS_WAIT_AGE" ) private int BUSINESS_WAIT_AGE;
-    @Column(name = "BV_STATUS",length=11) private String BV_STATUS;
+    @Column(name = "BV_STATUS",length=20) private String BV_STATUS;
     @Column(name = "EMPLOYEE_CLASS_CATEGORY",length=50) private String EMPLOYEE_CLASS_CATEGORY;
     @Column(name = "GENDER",length=50) private String GENDER;
     @Column(name = "CATEGORY_CODE",length=50) private String CATEGORY_CODE;

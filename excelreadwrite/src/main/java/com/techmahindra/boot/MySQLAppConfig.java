@@ -67,7 +67,7 @@ public class MySQLAppConfig {
         Stackoverflow description of what each hibernate.hbm2ddl.auto param does
          */
         hibernateProperties.setProperty("hibernate.dialect","org.hibernate.dialect.MySQL5Dialect");
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
 
         return hibernateProperties;
