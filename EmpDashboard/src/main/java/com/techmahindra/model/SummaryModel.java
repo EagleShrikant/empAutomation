@@ -100,128 +100,148 @@ public class SummaryModel {
 		summaryDeliverywithoutPO.setTotalBilled(  summaryDeliverywithoutPO.getBilledOffshore() + summaryDeliverywithoutPO.getBilledOnsite());
 
 		summaryList.add(summaryDeliverywithoutPO);
-		SummaryRow summary = new SummaryRow();
+		SummaryRow deliveryTotalsummary = new SummaryRow();
 		
 		// Delivery Total
-		summary.setColumnRowName("Delivery Total");
-		summary.setTotalOffshore ( summary.getTotalOffshore() + summary.getTotalOffshore());
-		summary.setTotalOnsite(  summary.getTotalOnsite() + summary.getTotalOnsite());
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( summary.getUnbilledOffshore() + summary.getUnbilledOffshore());
-		summary.setUnbilledOnsite ( summary.getUnbilledOnsite() + summary.getUnbilledOnsite());
-		summary.setDoNOTBILL ( summary.getDoNOTBILL() + summary.getDoNOTBILL());
-		summary.setTotalUnbilled( summary.getTotalUnbilled() + summary.getTotalUnbilled());
-		summary.setBilledOffshore ( summary.getBilledOffshore() + summary.getBilledOffshore());
-		summary.setBilledOnsite ( summary.getBilledOnsite() + summary.getBilledOnsite());
-		summary.setTotalBilled( summary.getTotalBilled() + summary.getTotalBilled());
+		deliveryTotalsummary.setColumnRowName("Delivery Total");
+		deliveryTotalsummary.setTotalOffshore ( summaryDeliveryProjectsWithPO.getTotalOffshore() + summaryDeliverywithoutPO.getTotalOffshore());
+		deliveryTotalsummary.setTotalOnsite(  summaryDeliveryProjectsWithPO.getTotalOnsite() + summaryDeliverywithoutPO.getTotalOnsite());
+		deliveryTotalsummary.setTotalAllocated ( summaryDeliveryProjectsWithPO.getTotalAllocated() + summaryDeliverywithoutPO.getTotalAllocated());
+		deliveryTotalsummary.setUnbilledOffshore ( summaryDeliveryProjectsWithPO.getUnbilledOffshore() + summaryDeliverywithoutPO.getUnbilledOffshore());
+		deliveryTotalsummary.setUnbilledOnsite ( summaryDeliveryProjectsWithPO.getUnbilledOnsite() + summaryDeliverywithoutPO.getUnbilledOnsite());
+		deliveryTotalsummary.setDoNOTBILL ( summaryDeliveryProjectsWithPO.getDoNOTBILL() + summaryDeliverywithoutPO.getDoNOTBILL());
+		deliveryTotalsummary.setTotalUnbilled( summaryDeliveryProjectsWithPO.getTotalUnbilled() + summaryDeliverywithoutPO.getTotalUnbilled());
+		deliveryTotalsummary.setBilledOffshore ( summaryDeliveryProjectsWithPO.getBilledOffshore() + summaryDeliverywithoutPO.getBilledOffshore());
+		deliveryTotalsummary.setBilledOnsite ( summaryDeliveryProjectsWithPO.getBilledOnsite() + summaryDeliverywithoutPO.getBilledOnsite());
+		deliveryTotalsummary.setTotalBilled( summaryDeliveryProjectsWithPO.getTotalBilled() + summaryDeliverywithoutPO.getTotalBilled());
 
-		summaryList.add(summary);
-		summary = new SummaryRow();
+		summaryList.add(deliveryTotalsummary);
+		SummaryRow deliveryWDSummary = new SummaryRow();
 		
 		// Delivery WD
-		summary.setColumnRowName("Delivery WD");
-		summary.setTotalOffshore ( getDeliveryWDTotalOffshore(currentEmpList));
-		summary.setTotalOnsite(  getDeliveryWDTotalOnsite(currentEmpList));
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( getDeliveryWDUnbilledOffshore(currentEmpList));
-		summary.setUnbilledOnsite ( getDeliveryWDUnbilledOnsite(currentEmpList));
-		summary.setDoNOTBILL ( getDeliveryWDDoNOTBILL(currentEmpList));
-		summary.setTotalUnbilled( summary.getUnbilledOffshore() + summary.getUnbilledOnsite());
-		summary.setBilledOffshore ( getDeliveryWDBilledOffshore(currentEmpList));
-		summary.setBilledOnsite ( getDeliveryWDBilledOnsite(currentEmpList));
-		summary.setTotalBilled(  summary.getBilledOffshore() + summary.getBilledOnsite());
+		deliveryWDSummary.setColumnRowName("Delivery WD");
+		deliveryWDSummary.setTotalOffshore ( getDeliveryWDTotalOffshore(currentEmpList));
+		deliveryWDSummary.setTotalOnsite(  getDeliveryWDTotalOnsite(currentEmpList));
+		deliveryWDSummary.setTotalAllocated ( deliveryWDSummary.getTotalOffshore() + deliveryWDSummary.getTotalOnsite());
+		deliveryWDSummary.setUnbilledOffshore ( getDeliveryWDUnbilledOffshore(currentEmpList));
+		deliveryWDSummary.setUnbilledOnsite ( getDeliveryWDUnbilledOnsite(currentEmpList));
+		deliveryWDSummary.setDoNOTBILL ( getDeliveryWDDoNOTBILL(currentEmpList));
+		deliveryWDSummary.setTotalUnbilled( deliveryWDSummary.getUnbilledOffshore() + deliveryWDSummary.getUnbilledOnsite());
+		deliveryWDSummary.setBilledOffshore ( getDeliveryWDBilledOffshore(currentEmpList));
+		deliveryWDSummary.setBilledOnsite ( getDeliveryWDBilledOnsite(currentEmpList));
+		deliveryWDSummary.setTotalBilled(  deliveryWDSummary.getBilledOffshore() + deliveryWDSummary.getBilledOnsite());
 
-		summaryList.add(summary);
-		summary = new SummaryRow();
+		summaryList.add(deliveryWDSummary);
+		SummaryRow mENoPOAmericasSummary = new SummaryRow();
 		
 		// ME No PO Americas
-		summary.setColumnRowName("ME No PO Americas");
-		summary.setTotalOffshore ( getMENoPOAmericasTotalOffshore(currentEmpList));
-		summary.setTotalOnsite(  getMENoPOAmericasTotalOnsite(currentEmpList));
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( getMENoPOAmericasUnbilledOffshore(currentEmpList));
-		summary.setUnbilledOnsite ( getMENoPOAmericasUnbilledOnsite(currentEmpList));
-		summary.setDoNOTBILL ( getMENoPOAmericasDoNOTBILL(currentEmpList));
-		summary.setTotalUnbilled( summary.getUnbilledOffshore() + summary.getUnbilledOnsite());
-		summary.setBilledOffshore ( getMENoPOAmericasBilledOffshore(currentEmpList));
-		summary.setBilledOnsite ( getMENoPOAmericasBilledOnsite(currentEmpList));
-		summary.setTotalBilled(  summary.getBilledOffshore() + summary.getBilledOnsite());
-		summaryList.add(summary);
-		summary = new SummaryRow();
+		mENoPOAmericasSummary.setColumnRowName("ME No PO Americas");
+		mENoPOAmericasSummary.setTotalOffshore ( getMENoPOAmericasTotalOffshore(currentEmpList));
+		mENoPOAmericasSummary.setTotalOnsite(  getMENoPOAmericasTotalOnsite(currentEmpList));
+		mENoPOAmericasSummary.setTotalAllocated ( mENoPOAmericasSummary.getTotalOffshore() + mENoPOAmericasSummary.getTotalOnsite());
+		mENoPOAmericasSummary.setUnbilledOffshore ( getMENoPOAmericasUnbilledOffshore(currentEmpList));
+		mENoPOAmericasSummary.setUnbilledOnsite ( getMENoPOAmericasUnbilledOnsite(currentEmpList));
+		mENoPOAmericasSummary.setDoNOTBILL ( getMENoPOAmericasDoNOTBILL(currentEmpList));
+		mENoPOAmericasSummary.setTotalUnbilled( mENoPOAmericasSummary.getUnbilledOffshore() + mENoPOAmericasSummary.getUnbilledOnsite());
+		mENoPOAmericasSummary.setBilledOffshore ( getMENoPOAmericasBilledOffshore(currentEmpList));
+		mENoPOAmericasSummary.setBilledOnsite ( getMENoPOAmericasBilledOnsite(currentEmpList));
+		mENoPOAmericasSummary.setTotalBilled(  mENoPOAmericasSummary.getBilledOffshore() + mENoPOAmericasSummary.getBilledOnsite());
+		summaryList.add(mENoPOAmericasSummary);
+		SummaryRow OtherInvestmentsummary = new SummaryRow();
 		
 		// Other Investment
-		summary.setColumnRowName("Other Investment");
-		summary.setTotalOffshore ( getOtherInvestmentTotalOffshore(currentEmpList));
-		summary.setTotalOnsite(  getOtherInvestmentTotalOnsite(currentEmpList));
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( getOtherInvestmentUnbilledOffshore(currentEmpList));
-		summary.setUnbilledOnsite ( getOtherInvestmentUnbilledOnsite(currentEmpList));
-		summary.setDoNOTBILL ( getOtherInvestmentDoNOTBILL(currentEmpList));
-		summary.setTotalUnbilled( summary.getUnbilledOffshore() + summary.getUnbilledOnsite());
-		summary.setBilledOffshore ( getOtherInvestmentBilledOffshore(currentEmpList));
-		summary.setBilledOnsite ( getOtherInvestmentBilledOnsite(currentEmpList));
-		summary.setTotalBilled(  summary.getBilledOffshore() + summary.getBilledOnsite());
+		OtherInvestmentsummary.setColumnRowName("Other Investment");
+		OtherInvestmentsummary.setTotalOffshore ( getOtherInvestmentTotalOffshore(currentEmpList));
+		OtherInvestmentsummary.setTotalOnsite(  getOtherInvestmentTotalOnsite(currentEmpList));
+		OtherInvestmentsummary.setTotalAllocated ( OtherInvestmentsummary.getTotalOffshore() + OtherInvestmentsummary.getTotalOnsite());
+		OtherInvestmentsummary.setUnbilledOffshore ( getOtherInvestmentUnbilledOffshore(currentEmpList));
+		OtherInvestmentsummary.setUnbilledOnsite ( getOtherInvestmentUnbilledOnsite(currentEmpList));
+		OtherInvestmentsummary.setDoNOTBILL ( getOtherInvestmentDoNOTBILL(currentEmpList));
+		OtherInvestmentsummary.setTotalUnbilled( OtherInvestmentsummary.getUnbilledOffshore() + OtherInvestmentsummary.getUnbilledOnsite());
+		OtherInvestmentsummary.setBilledOffshore ( getOtherInvestmentBilledOffshore(currentEmpList));
+		OtherInvestmentsummary.setBilledOnsite ( getOtherInvestmentBilledOnsite(currentEmpList));
+		OtherInvestmentsummary.setTotalBilled(  OtherInvestmentsummary.getBilledOffshore() + OtherInvestmentsummary.getBilledOnsite());
 		
-		summaryList.add(summary);
-		summary = new SummaryRow();
+		summaryList.add(OtherInvestmentsummary);
+		SummaryRow pipelineProjectSummary = new SummaryRow();
+		
 		// Pipeline Project
-		summary.setColumnRowName("Pipeline Project");
-		summary.setTotalOffshore ( getPipelineProjectTotalOffshore(currentEmpList));
-		summary.setTotalOnsite(  getPipelineProjectTotalOnsite(currentEmpList));
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( getPipelineProjectUnbilledOffshore(currentEmpList));
-		summary.setUnbilledOnsite ( getPipelineProjectUnbilledOnsite(currentEmpList));
-		summary.setDoNOTBILL ( getPipelineProjectDoNOTBILL(currentEmpList));
-		summary.setTotalUnbilled( summary.getUnbilledOffshore() + summary.getUnbilledOnsite());
-		summary.setBilledOffshore ( getPipelineProjectBilledOffshore(currentEmpList));
-		summary.setBilledOnsite ( getPipelineProjectBilledOnsite(currentEmpList));
-		summary.setTotalBilled(  summary.getBilledOffshore() + summary.getBilledOnsite());
-		summaryList.add(summary);
-		summary = new SummaryRow();
+		pipelineProjectSummary.setColumnRowName("Pipeline Project");
+		pipelineProjectSummary.setTotalOffshore ( getPipelineProjectTotalOffshore(currentEmpList));
+		pipelineProjectSummary.setTotalOnsite(  getPipelineProjectTotalOnsite(currentEmpList));
+		pipelineProjectSummary.setTotalAllocated ( pipelineProjectSummary.getTotalOffshore() + pipelineProjectSummary.getTotalOnsite());
+		pipelineProjectSummary.setUnbilledOffshore ( getPipelineProjectUnbilledOffshore(currentEmpList));
+		pipelineProjectSummary.setUnbilledOnsite ( getPipelineProjectUnbilledOnsite(currentEmpList));
+		pipelineProjectSummary.setDoNOTBILL ( getPipelineProjectDoNOTBILL(currentEmpList));
+		pipelineProjectSummary.setTotalUnbilled( pipelineProjectSummary.getUnbilledOffshore() + pipelineProjectSummary.getUnbilledOnsite());
+		pipelineProjectSummary.setBilledOffshore ( getPipelineProjectBilledOffshore(currentEmpList));
+		pipelineProjectSummary.setBilledOnsite ( getPipelineProjectBilledOnsite(currentEmpList));
+		pipelineProjectSummary.setTotalBilled(  pipelineProjectSummary.getBilledOffshore() + pipelineProjectSummary.getBilledOnsite());
+		summaryList.add(pipelineProjectSummary);
+		SummaryRow managementprojectSummary = new SummaryRow();
 		
 		// Management Project
-		summary.setColumnRowName("Management Project");
-		summary.setTotalOffshore ( getManagementProjectTotalOffshore(currentEmpList));
-		summary.setTotalOnsite(  getManagementProjectTotalOnsite(currentEmpList));
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( getManagementProjectUnbilledOffshore(currentEmpList));
-		summary.setUnbilledOnsite ( getManagementProjectUnbilledOnsite(currentEmpList));
-		summary.setDoNOTBILL ( getManagementProjectDoNOTBILL(currentEmpList));
-		summary.setTotalUnbilled( summary.getUnbilledOffshore() + summary.getUnbilledOnsite());
-		summary.setBilledOffshore ( getManagementProjectBilledOffshore(currentEmpList));
-		summary.setBilledOnsite ( getManagementProjectBilledOnsite(currentEmpList));
-		summary.setTotalBilled(  summary.getBilledOffshore() + summary.getBilledOnsite());
+		managementprojectSummary.setColumnRowName("Management Project");
+		managementprojectSummary.setTotalOffshore ( getManagementProjectTotalOffshore(currentEmpList));
+		managementprojectSummary.setTotalOnsite(  getManagementProjectTotalOnsite(currentEmpList));
+		managementprojectSummary.setTotalAllocated ( managementprojectSummary.getTotalOffshore() + managementprojectSummary.getTotalOnsite());
+		managementprojectSummary.setUnbilledOffshore ( getManagementProjectUnbilledOffshore(currentEmpList));
+		managementprojectSummary.setUnbilledOnsite ( getManagementProjectUnbilledOnsite(currentEmpList));
+		managementprojectSummary.setDoNOTBILL ( getManagementProjectDoNOTBILL(currentEmpList));
+		managementprojectSummary.setTotalUnbilled( managementprojectSummary.getUnbilledOffshore() + managementprojectSummary.getUnbilledOnsite());
+		managementprojectSummary.setBilledOffshore ( getManagementProjectBilledOffshore(currentEmpList));
+		managementprojectSummary.setBilledOnsite ( getManagementProjectBilledOnsite(currentEmpList));
+		managementprojectSummary.setTotalBilled(  managementprojectSummary.getBilledOffshore() + managementprojectSummary.getBilledOnsite());
 
+		summaryList.add(managementprojectSummary);
+		SummaryRow nonDeliverySubTotalsummary = new SummaryRow();
+		
 		// Non Delivery Sub Total
-		summary.setColumnRowName("Non Delivery Sub Total");
-		summary.setTotalOffshore ( summary.getTotalOffshore() + summary.getTotalOffshore() + summary.getTotalOffshore() + summary.getTotalOffshore() + summary.getTotalOffshore());
-		summary.setTotalOnsite(  summary.getTotalOnsite() + summary.getTotalOnsite() + summary.getTotalOnsite() + summary.getTotalOnsite() + summary.getTotalOnsite());
-		summary.setTotalAllocated ( summary.getTotalAllocated() + summary.getTotalAllocated() + summary.getTotalAllocated() + summary.getTotalAllocated() + summary.getTotalAllocated());
-		summary.setUnbilledOffshore ( summary.getUnbilledOffshore() + summary.getUnbilledOffshore() + summary.getUnbilledOffshore() + summary.getUnbilledOffshore() + summary.getUnbilledOffshore());
-		summary.setUnbilledOnsite ( summary.getUnbilledOnsite() + summary.getUnbilledOnsite() + summary.getUnbilledOnsite() + summary.getUnbilledOnsite() + summary.getUnbilledOnsite());
-		summary.setDoNOTBILL ( summary.getDoNOTBILL() + summary.getDoNOTBILL() + summary.getDoNOTBILL() + summary.getDoNOTBILL() + summary.getDoNOTBILL());
-		summary.setTotalUnbilled( summary.getTotalUnbilled()+ summary.getTotalUnbilled()+ summary.getTotalUnbilled()+ summary.getTotalUnbilled()+ summary.getTotalUnbilled());
-		summary.setBilledOffshore ( summary.getBilledOffshore() + summary.getBilledOffshore() + summary.getBilledOffshore() + summary.getBilledOffshore() + summary.getBilledOffshore());
-		summary.setBilledOnsite ( summary.getBilledOnsite() + summary.getBilledOnsite() + summary.getBilledOnsite() + summary.getBilledOnsite() + summary.getBilledOnsite());
-		summary.setTotalBilled(  summary.getTotalBilled() + summary.getTotalBilled() + summary.getTotalBilled() + summary.getTotalBilled() + summary.getTotalBilled());
-		summaryList.add(summary);
-		summary = new SummaryRow();
+		nonDeliverySubTotalsummary.setColumnRowName("Non Delivery Sub Total");
+		nonDeliverySubTotalsummary.setTotalOffshore ( deliveryWDSummary.getTotalOffshore() + mENoPOAmericasSummary.getTotalOffshore() + OtherInvestmentsummary.getTotalOffshore() + pipelineProjectSummary.getTotalOffshore() + managementprojectSummary.getTotalOffshore());
+		nonDeliverySubTotalsummary.setTotalOnsite(  deliveryWDSummary.getTotalOnsite() + mENoPOAmericasSummary.getTotalOnsite() + OtherInvestmentsummary.getTotalOnsite() + pipelineProjectSummary.getTotalOnsite() + managementprojectSummary.getTotalOnsite());
+		nonDeliverySubTotalsummary.setTotalAllocated ( deliveryWDSummary.getTotalAllocated() + mENoPOAmericasSummary.getTotalAllocated() + OtherInvestmentsummary.getTotalAllocated() + pipelineProjectSummary.getTotalAllocated() + managementprojectSummary.getTotalAllocated());
+		nonDeliverySubTotalsummary.setUnbilledOffshore ( deliveryWDSummary.getUnbilledOffshore() + mENoPOAmericasSummary.getUnbilledOffshore() + OtherInvestmentsummary.getUnbilledOffshore() + pipelineProjectSummary.getUnbilledOffshore() + managementprojectSummary.getUnbilledOffshore());
+		nonDeliverySubTotalsummary.setUnbilledOnsite ( deliveryWDSummary.getUnbilledOnsite() + mENoPOAmericasSummary.getUnbilledOnsite() + OtherInvestmentsummary.getUnbilledOnsite() + pipelineProjectSummary.getUnbilledOnsite() + managementprojectSummary.getUnbilledOnsite());
+		nonDeliverySubTotalsummary.setDoNOTBILL ( deliveryWDSummary.getDoNOTBILL() + mENoPOAmericasSummary.getDoNOTBILL() + OtherInvestmentsummary.getDoNOTBILL() + pipelineProjectSummary.getDoNOTBILL() + managementprojectSummary.getDoNOTBILL());
+		nonDeliverySubTotalsummary.setTotalUnbilled( deliveryWDSummary.getTotalUnbilled()+ mENoPOAmericasSummary.getTotalUnbilled()+ OtherInvestmentsummary.getTotalUnbilled()+ pipelineProjectSummary.getTotalUnbilled()+ managementprojectSummary.getTotalUnbilled());
+		nonDeliverySubTotalsummary.setBilledOffshore ( deliveryWDSummary.getBilledOffshore() + mENoPOAmericasSummary.getBilledOffshore() + OtherInvestmentsummary.getBilledOffshore() + pipelineProjectSummary.getBilledOffshore() + managementprojectSummary.getBilledOffshore());
+		nonDeliverySubTotalsummary.setBilledOnsite ( deliveryWDSummary.getBilledOnsite() + mENoPOAmericasSummary.getBilledOnsite() + OtherInvestmentsummary.getBilledOnsite() + pipelineProjectSummary.getBilledOnsite() + managementprojectSummary.getBilledOnsite());
+		nonDeliverySubTotalsummary.setTotalBilled(  deliveryWDSummary.getTotalBilled() + mENoPOAmericasSummary.getTotalBilled() + OtherInvestmentsummary.getTotalBilled() + pipelineProjectSummary.getTotalBilled() + managementprojectSummary.getTotalBilled());
+		summaryList.add(nonDeliverySubTotalsummary);
+		SummaryRow bufferSummary = new SummaryRow();
 		
 		// Buffer
-		summary.setColumnRowName("Buffer");
-		summary.setTotalOffshore ( getBufferTotalOffshore(currentEmpList));
-		summary.setTotalOnsite(  getBufferTotalOnsite(currentEmpList));
-		summary.setTotalAllocated ( summary.getTotalOffshore() + summary.getTotalOnsite());
-		summary.setUnbilledOffshore ( getBufferUnbilledOffshore(currentEmpList));
-		summary.setUnbilledOnsite ( getBufferUnbilledOnsite(currentEmpList));
-		summary.setDoNOTBILL ( getBufferDoNOTBILL(currentEmpList));
-		summary.setTotalUnbilled( summary.getUnbilledOffshore() + summary.getUnbilledOnsite());
-		summary.setBilledOffshore ( getBufferBilledOffshore(currentEmpList));
-		summary.setBilledOnsite ( getBufferBilledOnsite(currentEmpList));
-		summary.setTotalBilled( summary.getBilledOffshore() + summary.getBilledOnsite());
+		bufferSummary.setColumnRowName("Buffer");
+		bufferSummary.setTotalOffshore ( getBufferTotalOffshore(currentEmpList));
+		bufferSummary.setTotalOnsite(  getBufferTotalOnsite(currentEmpList));
+		bufferSummary.setTotalAllocated ( bufferSummary.getTotalOffshore() + bufferSummary.getTotalOnsite());
+		bufferSummary.setUnbilledOffshore ( getBufferUnbilledOffshore(currentEmpList));
+		bufferSummary.setUnbilledOnsite ( getBufferUnbilledOnsite(currentEmpList));
+		bufferSummary.setDoNOTBILL ( getBufferDoNOTBILL(currentEmpList));
+		bufferSummary.setTotalUnbilled( bufferSummary.getUnbilledOffshore() + bufferSummary.getUnbilledOnsite());
+		bufferSummary.setBilledOffshore ( getBufferBilledOffshore(currentEmpList));
+		bufferSummary.setBilledOnsite ( getBufferBilledOnsite(currentEmpList));
+		bufferSummary.setTotalBilled( bufferSummary.getBilledOffshore() + bufferSummary.getBilledOnsite());
 		
-		summaryList.add(summary);
+		summaryList.add(bufferSummary);
 		
+		
+		// Grand Total
+		SummaryRow grandTotalSummary = new SummaryRow();
+		
+		grandTotalSummary.setColumnRowName("Grand Total");
+		grandTotalSummary.setTotalOffshore ( deliveryTotalsummary.getTotalOffshore() + nonDeliverySubTotalsummary.getTotalOffshore() + bufferSummary.getTotalOffshore());
+		grandTotalSummary.setTotalOnsite( deliveryTotalsummary.getTotalOnsite() + nonDeliverySubTotalsummary.getTotalOnsite() + bufferSummary.getTotalOnsite());
+		grandTotalSummary.setTotalAllocated ( deliveryTotalsummary.getTotalAllocated() + nonDeliverySubTotalsummary.getTotalAllocated() + bufferSummary.getTotalAllocated());
+		grandTotalSummary.setUnbilledOffshore (deliveryTotalsummary.getUnbilledOffshore() + nonDeliverySubTotalsummary.getUnbilledOffshore() + bufferSummary.getUnbilledOffshore());
+		grandTotalSummary.setUnbilledOnsite ( deliveryTotalsummary.getUnbilledOnsite() + nonDeliverySubTotalsummary.getUnbilledOnsite() + bufferSummary.getUnbilledOnsite());
+		grandTotalSummary.setDoNOTBILL ( deliveryTotalsummary.getDoNOTBILL() + nonDeliverySubTotalsummary.getDoNOTBILL() + bufferSummary.getDoNOTBILL());
+		grandTotalSummary.setTotalUnbilled( deliveryTotalsummary.getTotalUnbilled() + nonDeliverySubTotalsummary.getTotalUnbilled() + bufferSummary.getTotalUnbilled());
+		grandTotalSummary.setBilledOffshore ( deliveryTotalsummary.getBilledOffshore() + nonDeliverySubTotalsummary.getBilledOffshore() + bufferSummary.getBilledOffshore());
+		grandTotalSummary.setBilledOnsite ( deliveryTotalsummary.getBilledOnsite() + nonDeliverySubTotalsummary.getBilledOnsite() + bufferSummary.getBilledOnsite());
+		grandTotalSummary.setTotalBilled( deliveryTotalsummary.getTotalBilled() + nonDeliverySubTotalsummary.getTotalBilled() + bufferSummary.getTotalBilled());
+		summaryList.add(grandTotalSummary);
 		return summaryList;
 		
 	}
