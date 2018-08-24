@@ -250,7 +250,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -261,7 +261,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -269,15 +269,21 @@ public class SummaryModel {
 	}
 
 	private int getBufferDoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if( ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("NA")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getBufferUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -288,7 +294,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -299,7 +305,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE"))) {
 	        	temp ++;
 	        }
 		}
@@ -310,7 +316,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Buffer") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE"))) {
 	        	temp ++;
 	        }
 		}
@@ -324,7 +330,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -335,7 +341,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -343,15 +349,21 @@ public class SummaryModel {
 	}
 
 	private int getManagementProjectDoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if( ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("NA")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getManagementProjectUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -362,7 +374,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -373,7 +385,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE"))) {
 	        	temp ++;
 	        }
 		}
@@ -384,7 +396,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Management") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE"))) {
 	        	temp ++;
 	        }
 		}
@@ -393,38 +405,80 @@ public class SummaryModel {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 	private int getPipelineProjectBilledOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getPipelineProjectBilledOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getPipelineProjectDoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if( ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("NA")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getPipelineProjectUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getPipelineProjectUnbilledOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getPipelineProjectTotalOffshore(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE"))) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getPipelineProjectTotalOnsite(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Pipeline") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE"))) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	
@@ -433,7 +487,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -444,7 +498,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -452,15 +506,21 @@ public class SummaryModel {
 	}
 
 	private int getOtherInvestmentDoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-				return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if( ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("NA")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getOtherInvestmentUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -471,7 +531,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -482,7 +542,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE"))) {
 	        	temp ++;
 	        }
 		}
@@ -493,7 +553,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Investment") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE"))) {
 	        	temp ++;
 	        }
 		}
@@ -505,7 +565,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_NO_PO_America_WD") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -516,7 +576,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_NO_PO_America_WD") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -524,15 +584,21 @@ public class SummaryModel {
 	}
 
 	private int getMENoPOAmericasDoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if( ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("NA")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getMENoPOAmericasUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if((ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_NO_PO_America_WD")) && !(ce.isBILLABLITY_STATUS())) {
+	        if((((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment")) && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -543,7 +609,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_NO_PO_America_WD") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -554,7 +620,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_NO_PO_America_WD") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE"))) {
 	        	temp ++;
 	        }
 		}
@@ -565,7 +631,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_NO_PO_America_WD")) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Disney Investment")) {
 	        	temp ++;
 	        }
 		}
@@ -578,7 +644,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_Delivery_WD") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -589,7 +655,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_Delivery_WD") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -597,15 +663,21 @@ public class SummaryModel {
 	}
 
 	private int getDeliveryWDDoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			
+	        if( ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("NA")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+	        	temp ++;
+	        }
+		}
+		return temp;
 	}
 
 	private int getDeliveryWDUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_Delivery_WD") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -616,7 +688,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_Delivery_WD") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -627,7 +699,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_Delivery_WD") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE"))) {
 	        	temp ++;
 	        }
 		}
@@ -639,7 +711,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getPROJECT_DESCRIPTION().equalsIgnoreCase("ME_Delivery_WD") && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) {
+	        if(ce.getPROJECT_TYPE().equalsIgnoreCase("Ingram Investment") && ((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE"))) {
 	        	temp ++;
 	        }
 		}
@@ -651,7 +723,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("N")&& ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && (null!= ce.getPO_FLAG() && ce.getPO_FLAG().equalsIgnoreCase("N"))&& (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -662,7 +734,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("N") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && (null!= ce.getPO_FLAG() && ce.getPO_FLAG().equalsIgnoreCase("N")) && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -670,15 +742,21 @@ public class SummaryModel {
 	}
 
 	private int getDeliverywithoutPODoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			if(((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("N")) && (null!= ce.getPROJECT_TYPE() && ce.getPROJECT_TYPE().equalsIgnoreCase("Delivery")) && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+				temp++;
+				
+			}
+		}
+		return temp;
 	}
 
 	private int getDeliverywithoutPOUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("N")&& !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && (null!= ce.getPO_FLAG() && ce.getPO_FLAG().equalsIgnoreCase("N"))&& (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -689,7 +767,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("N") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && (null!= ce.getPO_FLAG() && ce.getPO_FLAG().equalsIgnoreCase("N")) && (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -700,7 +778,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("N")) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && (null!= ce.getPO_FLAG() && ce.getPO_FLAG().equalsIgnoreCase("N"))) {
 	        	temp ++;
 	        }
 		}
@@ -711,18 +789,19 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("N")) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && (null!= ce.getPO_FLAG() && ce.getPO_FLAG().equalsIgnoreCase("N"))) {
 	        	temp ++;
 	        }
 		}
 		return temp;
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	private int getDeliveryProjectswithPOBilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("Y")&& ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y"))&& (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -733,7 +812,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("Y") && ce.isBILLABLITY_STATUS()) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y")) && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -741,15 +820,22 @@ public class SummaryModel {
 	}
 
 	private int getDeliveryProjectswithPODoNOTBILL(List<CurrentEmployee> currentEmpList) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		int temp = 0;
+		for(CurrentEmployee ce : currentEmpList) {
+			if(((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y")) && (null!= ce.getPROJECT_TYPE() && ce.getPROJECT_TYPE().equalsIgnoreCase("Delivery")) && (null!=ce.getBILLABLITY_STATUS() && ce.getBILLABLITY_STATUS().equalsIgnoreCase("N")) && ce.getEMPLOYEE_CLASS_CATEGORY().equalsIgnoreCase("Designated- Non Billable(DNB)")) {
+				temp++;
+				
+			}
+		}
+		return temp;
 	}
 
 	private int getDeliveryProjectswithPOUnbilledOnsite(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("Y")&& !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y"))&& (null!=ce.getBILLABLITY_STATUS() && !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -760,7 +846,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("Y") && !(ce.isBILLABLITY_STATUS())) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y")) && (null!=ce.getBILLABLITY_STATUS() &&  !(ce.getBILLABLITY_STATUS().equalsIgnoreCase("Y")))) {
 	        	temp ++;
 	        }
 		}
@@ -772,7 +858,7 @@ public class SummaryModel {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
 			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE") && ce.getPO_FLAG().equalsIgnoreCase("Y")) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("ONSITE")) && ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
@@ -782,11 +868,11 @@ public class SummaryModel {
 	private int getDeliveryProjectswithPOTotalOffshore(List<CurrentEmployee> currentEmpList) {
 		int temp = 0;
 		for(CurrentEmployee ce : currentEmpList) {
-			
-	        if(ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE") && ce.getPO_FLAG().equalsIgnoreCase("Y")) {
+	        if(((null!= ce.getONSITE_OFFSHORE()) && ce.getONSITE_OFFSHORE().equalsIgnoreCase("OFFSHORE")) && ((null!= ce.getPO_FLAG()) && ce.getPO_FLAG().equalsIgnoreCase("Y"))) {
 	        	temp ++;
 	        }
 		}
+		
 		return temp;
 	}
 }

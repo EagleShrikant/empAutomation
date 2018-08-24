@@ -1,47 +1,35 @@
 package com.techmahindra.dao;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "RESOURCE_TRACKER")
-public class ResourceTracker {
 
-	@Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int RESOURCE_TRACKER_ID;
+@Entity
+@Table(name = "EMP_EXIT_ENTRY")
+public class EntryExitDAO {
+
+	@EmbeddedId
+    private EntryExitPK entryExitPK;
 	
-	@Column(name = "STATUS") private String STATUS;
-	@Column(name = "EMPLOYEE_ID") private String EMPLOYEE_ID;
-	@Column(name = "EMPLOYEE_NAME") private String EMPLOYEE_NAME;
+	
+	@Column(name = "EMP_NAME") private String EMPLOYEE_NAME;
 	@Column(name = "BAND") private String BAND;
 	@Column(name = "PROJECT_DESCRIPTION") private String PROJECT_DESCRIPTION;
 	@Column(name = "PROGRAM_MANAGER_NAME") private String PROGRAM_MANAGER_NAME;
-	@Column(name = "DATE") private Timestamp DATE;
-	
-	public int getRESOURCE_TRACKER_ID() {
-		return RESOURCE_TRACKER_ID;
+	public EntryExitPK getEntryExitPK() {
+		return entryExitPK;
 	}
-	public void setRESOURCE_TRACKER_ID(int rESOURCE_TRACKER_ID) {
-		RESOURCE_TRACKER_ID = rESOURCE_TRACKER_ID;
-	}
-	public String getSTATUS() {
-		return STATUS;
-	}
-	public void setSTATUS(String sTATUS) {
-		STATUS = sTATUS;
-	}
-	public String getEMPLOYEE_ID() {
-		return EMPLOYEE_ID;
-	}
-	public void setEMPLOYEE_ID(String eMPLOYEE_ID) {
-		EMPLOYEE_ID = eMPLOYEE_ID;
+	public void setEntryExitPK(EntryExitPK entryExitPK) {
+		this.entryExitPK = entryExitPK;
 	}
 	public String getEMPLOYEE_NAME() {
 		return EMPLOYEE_NAME;
@@ -67,12 +55,14 @@ public class ResourceTracker {
 	public void setPROGRAM_MANAGER_NAME(String pROGRAM_MANAGER_NAME) {
 		PROGRAM_MANAGER_NAME = pROGRAM_MANAGER_NAME;
 	}
-	public Timestamp getDATE() {
-		return DATE;
+	@Override
+	public String toString() {
+		return "EntryExitDAO [entryExitPK=" + entryExitPK + ", EMPLOYEE_NAME=" + EMPLOYEE_NAME + ", BAND=" + BAND
+				+ ", PROJECT_DESCRIPTION=" + PROJECT_DESCRIPTION + ", PROGRAM_MANAGER_NAME=" + PROGRAM_MANAGER_NAME
+				+ "]";
 	}
-	public void setDATE(Timestamp dATE) {
-		DATE = dATE;
-	}
+	
+	
 	
 	
 	

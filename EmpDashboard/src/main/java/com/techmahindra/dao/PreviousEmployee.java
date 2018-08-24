@@ -1,9 +1,9 @@
 package com.techmahindra.dao;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,36 +13,46 @@ public class PreviousEmployee {
 
 	
 	@Id
-	@Column(name = "EMPID", length=11 ) private String EMPID;
+	@Column(name = "EMPLID", length=11 ) private String EMPID; 
 	
-	@Column(name = "EMP_NAME") private String EMP_NAME;
-    @Column(name = "BUSINESS_WAIT_AGE") private int BUSINESS_WAIT_AGE;
-    @Column(name = "BV_STATUS") private String BV_STATUS;
-    @Column(name = "EMPLOYEE_CLASS_CATEGORY") private String EMPLOYEE_CLASS_CATEGORY;
-    @Column(name = "GENDER") private String GENDER;
-    @Column(name = "CATEGORY_CODE") private String CATEGORY_CODE;
-    @Column(name = "HTR_FLAG") private String HTR_FLAG;
-    @Column(name = "EMPLOYEE_IBU") private String EMPLOYEE_IBU;
-    @Column(name = "BAND") private String BAND;
-    @Column(name = "TOTAL_EXPERIENCE") private double TOTAL_EXPERIENCE;
-    @Column(name = "CURRENT_COUNTRY") private String CURRENT_COUNTRY;
-    @Column(name = "CURRENT_LOCATION_CITY") private String CURRENT_LOCATION_CITY;
-    @Column(name = "ONSITE_OFFSHORE") private String ONSITE_OFFSHORE;
-    @Column(name = "PROJECT_ID") private String PROJECT_ID;
-    @Column(name = "PROJECT_DESCRIPTION") private String PROJECT_DESCRIPTION;
-    @Column(name = "PROJECT_CONTRACT_TYPE") private String PROJECT_CONTRACT_TYPE;
-    @Column(name = "PROJECT_MAINTYPE_DESCR") private String PROJECT_MAINTYPE_DESCR;
-    @Column(name = "BILLABLITY_STATUS") private boolean BILLABLITY_STATUS;
-    @Column(name = "CUSTOMER_ID") private String CUSTOMER_ID;
-    @Column(name = "CUSTOMER_NAME") private String CUSTOMER_NAME;
-    @Column(name = "SUPERVISOR_ID") private String SUPERVISOR_ID;
-    @Column(name = "SUPERVISOR_NAME") private String SUPERVISOR_NAME;
-    @Column(name = "PROGRAM_MANAGER_ID") private String PROGRAM_MANAGER_ID;
-    @Column(name = "PROGRAM_MANAGER_NAME") private String PROGRAM_MANAGER_NAME;
-    @Column(name = "PRIMARY_SKILL_CATEGORY_1") private String PRIMARY_SKILL_CATEGORY_1;
-    @Column(name = "PRIMARY_SKILL_CATEGORY_2") private String PRIMARY_SKILL_CATEGORY_2;
-    @Column(name = "PROJECT_TYPE") private String PROJECT_TYPE;
-    @Column(name = "PO_FLAG") private String PO_FLAG;
+	@Column(name = "EMP_NAME", length=50) private String EMP_NAME;
+    @Column(name = "BUSINESS_WAIT_AGE" ) private int BUSINESS_WAIT_AGE;
+    @Column(name = "BV_STATUS",length=20) private String BV_STATUS;
+    @Column(name = "EMPLOYEE_CLASS_CATEGORY",length=50) private String EMPLOYEE_CLASS_CATEGORY;
+    @Column(name = "GENDER",length=50) private String GENDER;
+    @Column(name = "CATEGORY_CODE",length=50) private String CATEGORY_CODE;
+    @Column(name = "HTR_FLAG",length=50) private String HTR_FLAG;
+    @Column(name = "EMPLOYEE_IBU",length=50) private String EMPLOYEE_IBU;
+    @Column(name = "BAND",length=50) private String BAND;
+    @Column(name = "TOTAL_EXPERIENCE",length=50) private double TOTAL_EXPERIENCE;
+    @Column(name = "CURRENT_COUNTRY",length=50) private String CURRENT_COUNTRY;
+    @Column(name = "CURRENT_LOCATION_CITY",length=50) private String CURRENT_LOCATION_CITY;
+    @Column(name = "ONSITE_OFFSHORE",length=50) private String ONSITE_OFFSHORE;
+    @Column(name = "PROJECT_ID",length=50) private String PROJECT_ID;
+    @Column(name = "PROJECT_DESCRIPTION",length=70) private String PROJECT_DESCRIPTION;
+    @Column(name = "PROJECT_CONTRACT_TYPE",length=50) private String PROJECT_CONTRACT_TYPE;
+    @Column(name = "PROJECT_MAINTYPE_DESCR",length=50) private String PROJECT_MAINTYPE_DESCR;
+    @Column(name = "BILLABLITY_STATUS",length=50) private String BILLABLITY_STATUS;
+    @Column(name = "CUSTOMER_ID",length=50) private String CUSTOMER_ID;
+    @Column(name = "CUSTOMER_NAME",length=50) private String CUSTOMER_NAME;
+    @Column(name = "SUPERVISOR_ID",length=50) private String SUPERVISOR_ID;
+    @Column(name = "SUPERVISOR_NAME",length=50) private String SUPERVISOR_NAME;
+    @Column(name = "PROGRAM_MANAGER_ID",length=50) private String PROGRAM_MANAGER_ID;
+    @Column(name = "PROGRAM_MANAGER_NAME",length=50) private String PROGRAM_MANAGER_NAME;
+    @Column(name = "PRIMARY_SKILL_CATEGORY_1",length=50) private String PRIMARY_SKILL_CATEGORY_1;
+    @Column(name = "PRIMARY_SKILL_CATEGORY_2",length=50) private String PRIMARY_SKILL_CATEGORY_2;
+    @Column(name = "PROJECT_TYPE",length=50) private String PROJECT_TYPE;
+    @Column(name = "PO_FLAG",length=10) private String PO_FLAG;
+    @Column(name = "COMMENTS",length=512) private String COMMENTS;
+    @Column(name = "ACCOUNT",length=10) private String ACCOUNT;
+    @Column(name = "BILLING_START_DATE",length=15) private Date BILLING_START_DATE;
+    @Column(name = "CATEGORY",length=20) private String CATEGORY;
+    @Column(name = "SUB_CATEGORY",length=20) private String SUB_CATEGORY;
+    @Column(name = "ACTION",length=20) private String ACTION;
+    
+    
+    
+    
 	public String getEMPID() {
 		return EMPID;
 	}
@@ -151,10 +161,10 @@ public class PreviousEmployee {
 	public void setPROJECT_MAINTYPE_DESCR(String pROJECT_MAINTYPE_DESCR) {
 		PROJECT_MAINTYPE_DESCR = pROJECT_MAINTYPE_DESCR;
 	}
-	public boolean isBILLABLITY_STATUS() {
+	public String isBILLABLITY_STATUS() {
 		return BILLABLITY_STATUS;
 	}
-	public void setBILLABLITY_STATUS(boolean bILLABLITY_STATUS) {
+	public void setBILLABLITY_STATUS(String bILLABLITY_STATUS) {
 		BILLABLITY_STATUS = bILLABLITY_STATUS;
 	}
 	public String getCUSTOMER_ID() {
@@ -216,6 +226,42 @@ public class PreviousEmployee {
 	}
 	public void setPO_FLAG(String PO_FLAG) {
 		this.PO_FLAG = PO_FLAG;
+	}
+	public String getCOMMENTS() {
+		return COMMENTS;
+	}
+	public void setCOMMENTS(String cOMMENTS) {
+		COMMENTS = cOMMENTS;
+	}
+	public String getACCOUNT() {
+		return ACCOUNT;
+	}
+	public void setACCOUNT(String aCCOUNT) {
+		ACCOUNT = aCCOUNT;
+	}
+	public Date getBILLING_START_DATE() {
+		return BILLING_START_DATE;
+	}
+	public void setBILLING_START_DATE(Date bILLING_START_DATE) {
+		BILLING_START_DATE = bILLING_START_DATE;
+	}
+	public String getCATEGORY() {
+		return CATEGORY;
+	}
+	public void setCATEGORY(String cATEGORY) {
+		CATEGORY = cATEGORY;
+	}
+	public String getSUB_CATEGORY() {
+		return SUB_CATEGORY;
+	}
+	public void setSUB_CATEGORY(String sUB_CATEGORY) {
+		SUB_CATEGORY = sUB_CATEGORY;
+	}
+	public String getACTION() {
+		return ACTION;
+	}
+	public void setACTION(String aCTION) {
+		ACTION = aCTION;
 	}
     
     

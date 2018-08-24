@@ -1,18 +1,18 @@
 package com.techmahindra.dao;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CURRENT_EMP_DATA")
+@Table(name = "CURR_EMP_DATA")
 public class CurrentEmployee {
 
 	@Id
-	@Column(name = "EMPID", length=11 ) private String EMPID; 
+	@Column(name = "EMPLID", length=11 ) private String EMPID; 
 	
 	@Column(name = "EMP_NAME", length=50) private String EMP_NAME;
     @Column(name = "BUSINESS_WAIT_AGE" ) private int BUSINESS_WAIT_AGE;
@@ -31,7 +31,7 @@ public class CurrentEmployee {
     @Column(name = "PROJECT_DESCRIPTION",length=70) private String PROJECT_DESCRIPTION;
     @Column(name = "PROJECT_CONTRACT_TYPE",length=50) private String PROJECT_CONTRACT_TYPE;
     @Column(name = "PROJECT_MAINTYPE_DESCR",length=50) private String PROJECT_MAINTYPE_DESCR;
-    @Column(name = "BILLABLITY_STATUS",length=50) private boolean BILLABLITY_STATUS;
+    @Column(name = "BILLABLITY_STATUS",length=50) private String BILLABLITY_STATUS;
     @Column(name = "CUSTOMER_ID",length=50) private String CUSTOMER_ID;
     @Column(name = "CUSTOMER_NAME",length=50) private String CUSTOMER_NAME;
     @Column(name = "SUPERVISOR_ID",length=50) private String SUPERVISOR_ID;
@@ -42,6 +42,14 @@ public class CurrentEmployee {
     @Column(name = "PRIMARY_SKILL_CATEGORY_2",length=50) private String PRIMARY_SKILL_CATEGORY_2;
     @Column(name = "PROJECT_TYPE",length=50) private String PROJECT_TYPE;
     @Column(name = "PO_FLAG",length=10) private String PO_FLAG;
+    @Column(name = "COMMENTS",length=512) private String COMMENTS;
+    @Column(name = "ACCOUNT",length=10) private String ACCOUNT;
+    @Column(name = "BILLING_START_DATE",length=15) private Date BILLING_START_DATE;
+    @Column(name = "CATEGORY",length=20) private String CATEGORY;
+    @Column(name = "SUB_CATEGORY",length=20) private String SUB_CATEGORY;
+    @Column(name = "ACTION",length=20) private String ACTION;
+    
+    
 	public String getEMPID() {
 		return EMPID;
 	}
@@ -150,10 +158,10 @@ public class CurrentEmployee {
 	public void setPROJECT_MAINTYPE_DESCR(String pROJECT_MAINTYPE_DESCR) {
 		PROJECT_MAINTYPE_DESCR = pROJECT_MAINTYPE_DESCR;
 	}
-	public boolean isBILLABLITY_STATUS() {
+	public String getBILLABLITY_STATUS() {
 		return BILLABLITY_STATUS;
 	}
-	public void setBILLABLITY_STATUS(boolean bILLABLITY_STATUS) {
+	public void setBILLABLITY_STATUS(String bILLABLITY_STATUS) {
 		BILLABLITY_STATUS = bILLABLITY_STATUS;
 	}
 	public String getCUSTOMER_ID() {
@@ -216,9 +224,46 @@ public class CurrentEmployee {
 	public void setPO_FLAG(String PO_FLAG) {
 		this.PO_FLAG = PO_FLAG;
 	}
+	public String getCOMMENTS() {
+		return COMMENTS;
+	}
+	public void setCOMMENTS(String cOMMENTS) {
+		COMMENTS = cOMMENTS;
+	}
+	public String getACCOUNT() {
+		return ACCOUNT;
+	}
+	public void setACCOUNT(String aCCOUNT) {
+		ACCOUNT = aCCOUNT;
+	}
+	public Date getBILLING_START_DATE() {
+		return BILLING_START_DATE;
+	}
+	public void setBILLING_START_DATE(Date bILLING_START_DATE) {
+		BILLING_START_DATE = bILLING_START_DATE;
+	}
+	public String getCATEGORY() {
+		return CATEGORY;
+	}
+	public void setCATEGORY(String cATEGORY) {
+		CATEGORY = cATEGORY;
+	}
+	public String getSUB_CATEGORY() {
+		return SUB_CATEGORY;
+	}
+	public void setSUB_CATEGORY(String sUB_CATEGORY) {
+		SUB_CATEGORY = sUB_CATEGORY;
+	}
+	public String getACTION() {
+		return ACTION;
+	}
+	public void setACTION(String aCTION) {
+		ACTION = aCTION;
+	}
+	
 	@Override
 	public String toString() {
-		return "\nCurrentEmployee [EMPID=" + EMPID + ", EMP_NAME=" + EMP_NAME + ", BUSINESS_WAIT_AGE=" + BUSINESS_WAIT_AGE
+		return "CurrentEmployee [EMPID=" + EMPID + ", EMP_NAME=" + EMP_NAME + ", BUSINESS_WAIT_AGE=" + BUSINESS_WAIT_AGE
 				+ ", BV_STATUS=" + BV_STATUS + ", EMPLOYEE_CLASS_CATEGORY=" + EMPLOYEE_CLASS_CATEGORY + ", GENDER="
 				+ GENDER + ", CATEGORY_CODE=" + CATEGORY_CODE + ", HTR_FLAG=" + HTR_FLAG + ", EMPLOYEE_IBU="
 				+ EMPLOYEE_IBU + ", BAND=" + BAND + ", TOTAL_EXPERIENCE=" + TOTAL_EXPERIENCE + ", CURRENT_COUNTRY="
@@ -230,8 +275,12 @@ public class CurrentEmployee {
 				+ SUPERVISOR_NAME + ", PROGRAM_MANAGER_ID=" + PROGRAM_MANAGER_ID + ", PROGRAM_MANAGER_NAME="
 				+ PROGRAM_MANAGER_NAME + ", PRIMARY_SKILL_CATEGORY_1=" + PRIMARY_SKILL_CATEGORY_1
 				+ ", PRIMARY_SKILL_CATEGORY_2=" + PRIMARY_SKILL_CATEGORY_2 + ", PROJECT_TYPE=" + PROJECT_TYPE
-				+ ", PO_FLAG=" + PO_FLAG + "]";
+				+ ", PO_FLAG=" + PO_FLAG + ", COMMENTS=" + COMMENTS + ", ACCOUNT=" + ACCOUNT + ", BILLING_START_DATE="
+				+ BILLING_START_DATE + ", CATEGORY=" + CATEGORY + ", SUB_CATEGORY=" + SUB_CATEGORY + ", ACTION="
+				+ ACTION + "]";
 	}
+	
+	
     
     
 }
