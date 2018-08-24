@@ -15,8 +15,8 @@ public class EntryExitPK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name = "DATE") private Date DATE;
-	@Column(name = "ENTRY_OR_EXIT") private String STATUS;
-	@Column(name = "EMPLID") private String EMPLOYEE_ID;
+	@Column(name = "ENTRY_OR_EXIT", length=20)  private String STATUS;
+	@Column(name = "EMPLID", length=15) private String EMPLOYEE_ID;
 	public Date getDATE() {
 		return DATE;
 	}

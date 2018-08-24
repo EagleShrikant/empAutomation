@@ -21,10 +21,10 @@ public class EntryExitDAO {
     private EntryExitPK entryExitPK;
 	
 	
-	@Column(name = "EMP_NAME") private String EMPLOYEE_NAME;
-	@Column(name = "BAND") private String BAND;
-	@Column(name = "PROJECT_DESCRIPTION") private String PROJECT_DESCRIPTION;
-	@Column(name = "PROGRAM_MANAGER_NAME") private String PROGRAM_MANAGER_NAME;
+	@Column(name = "EMP_NAME", length=50) private String EMPLOYEE_NAME;
+	@Column(name = "BAND", length=10) private String BAND;
+	@Column(name = "PROJECT_DESCRIPTION", length=200) private String PROJECT_DESCRIPTION;
+	@Column(name = "PROGRAM_MANAGER_NAME", length=50) private String PROGRAM_MANAGER_NAME;
 	public EntryExitPK getEntryExitPK() {
 		return entryExitPK;
 	}
